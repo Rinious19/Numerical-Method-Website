@@ -5,8 +5,8 @@ version: '3.8'
 services:
   #* 1. ตู้คอนเทนเนอร์สำหรับ Frontend (React/VITE)
   frontend:
-    # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ปัจจุบัน (.)
-    build: .
+    build:
+      context: ./frontend # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ frontend/
     # ตั้งชื่อให้ตู้คอนเทนเนอร์
     container_name: numerical-frontend
     # "เชื่อมประตู": เชื่อมประตูหมายเลข 5173 ของเครื่องคุณ เข้ากับประตูหมายเลข 80 ของตู้นี้ (ที่ Nginx เปิดไว้)
@@ -15,8 +15,8 @@ services:
 
   #* 2. ตู้คอนเทนเนอร์สำหรับ Backend (Node.js/Express)
   backend:
-    # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ ./backend
-    build: ./backend
+    build:
+      context: ./backend # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ backend/
     container_name: numerical-backend
     ports:
       - "8000:8000"
@@ -49,11 +49,11 @@ volumes:
 
 #@ ขั้นตอนสุดท้าย: รันทุกอย่างด้วยคำสั่งเดียว!**
 #* หลังจากที่เราสร้างไฟล์ทั้ง 3 ไฟล์เสร็จเรียบร้อยแล้ว:
-#* 1. เปิด Terminal ใน VS Code (ต้องแน่ใจว่าอยู่ที่ Root ของโปรเจค ไม่ใช่ใน folder backend)
-#* 2. รันคำสั่ง: docker-compose up --build
-#*            ● docker-compose up: คือคำสั่ง "เริ่มทำงานตามแผนผัง"
-#*            ● --build: คือคำสั่งพิเศษที่บอกว่า "ถ้ามีการแก้ไข Dockerfile ให้สร้างตู้คอนเทนเนอร์ใหม่
-#*                       ด้วยนะ" (ควรใช้ในครั้งแรก)
-#* 3. วิธีหยุด: เมื่อต้องการหยุดการทำงานทั้งหมด ให้กลับไปที่ Terminal แล้วกด Ctrl + C แล้วตามด้วยคำสั่ง 
-#*    docker-compose down เพื่อปิดและลบตู้คอนเทนเนอร์ทั้งหมด
+# 1. เปิด Terminal ใน VS Code (ต้องแน่ใจว่าอยู่ที่ Root ของโปรเจค ไม่ใช่ใน folder backend)
+# 2. รันคำสั่ง: docker-compose up --build
+#            ● docker-compose up: คือคำสั่ง "เริ่มทำงานตามแผนผัง"
+#            ● --build: คือคำสั่งพิเศษที่บอกว่า "ถ้ามีการแก้ไข Dockerfile ให้สร้างตู้คอนเทนเนอร์ใหม่
+#                       ด้วยนะ" (ควรใช้ในครั้งแรก)
+# 3. วิธีหยุด: เมื่อต้องการหยุดการทำงานทั้งหมด ให้กลับไปที่ Terminal แล้วกด Ctrl + C แล้วตามด้วยคำสั่ง 
+#    docker-compose down เพื่อปิดและลบตู้คอนเทนเนอร์ทั้งหมด
     
