@@ -24,7 +24,7 @@ services:
     environment:
       #! สำคัญมาก: บอกให้ Server ไปคุยกับ Database ที่ชื่อ "mongo" (ไม่ใช่ localhost)
       # Docker Compose จะสร้าง Network ภายในให้ตู้ทั้งหมดคุยกันผ่านชื่อ Service ได้
-      - MONGO_URI=mongodb://mongo:27017/numericalMethodsDB
+      - MONGO_URL=mongodb://mongo:27017/numericalMethodsDB
       # บอก Server ว่าให้รับคำขอจาก Frontend ที่ Port 5173
       - CLIENT_URL=http://localhost:5173
     # "เงื่อนไขการเริ่มทำงาน": บอกให้ตู้นี้รอจนกว่าตู้ "mongo" จะพร้อมทำงานก่อน
