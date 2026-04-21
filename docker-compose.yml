@@ -42,6 +42,8 @@ services:
     # ทำให้ถึงแม้เราจะลบตู้คอนเทนเนอร์ทิ้ง ข้อมูลของเราก็จะไม่หายไป
     volumes:
       - mongo-data:/data/db
+      # เป็นการเอาไฟล์ในเครื่องเรา ไปวางในโฟลเดอร์รันสคริปต์ของ Docker
+      - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js:ro
 
 #@ ประกาศ "พื้นที่เก็บของถาวร" ที่จะใช้
 volumes:
