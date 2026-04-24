@@ -14,6 +14,46 @@ class ConjugateGradientMethod extends JacobiIterationMethod {
     this.state.title = "Conjugate Gradient Method";
   }
 
+  //@ Override: สำหรับปุ่ม Fill Form สุ่มค่าที่เป็น Symmetric Positive Definite
+  fillForm = () => {
+    const { matrixSize } = this.state;
+    
+    // 1. สร้างเมทริกซ์สุ่ม M
+    const M = Array(matrixSize).fill(0).map(() => 
+      Array(matrixSize).fill(0).map(() => Math.floor(Math.random() * 5) + 1)
+    );
+
+    // 2. คำนวณ A = M * M^T (เพื่อให้ได้ Symmetric)
+    const newMatrixA = Array(matrixSize).fill(0).map(() => Array(matrixSize).fill(0));
+    for (let i = 0; i < matrixSize; i++) {
+      for (let j = 0; j < matrixSize; j++) {
+        let sum = 0;
+        for (let k = 0; k < matrixSize; k++) {
+          sum += M[i][k] * M[j][k];
+        }
+        newMatrixA[i][j] = sum;
+      }
+    }
+
+    // 3. เพิ่มค่าในแนวทแยง (Diagonal) เพื่อให้มั่นใจว่าเป็น Positive Definite
+    for (let i = 0; i < matrixSize; i++) {
+      newMatrixA[i][i] += matrixSize * 2; 
+    }
+
+    // 4. สุ่มเมทริกซ์ B
+    const newMatrixB = Array(matrixSize).fill(0).map(() => Math.floor(Math.random() * 50) + 1);
+
+    // 5. สุ่ม Initial Guess (สำหรับ Conjugate Gradient)
+    const newInitialX = Array(matrixSize).fill(0).map(() => 0);
+
+    this.setState({ 
+      matrixA: newMatrixA, 
+      matrixB: newMatrixB,
+      initialX: newInitialX, // ถ้าไม่มี state นี้ใน Cholesky ก็ไม่เป็นไรครับ
+      solution: null 
+    });
+  }
+
   //? Override Calculation Method
   //@ 3. Override เฉพาะ Method หลักสำหรับการคำนวณ
   calculateMethod = () => {

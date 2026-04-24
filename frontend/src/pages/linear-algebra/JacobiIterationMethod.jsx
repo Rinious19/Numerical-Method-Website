@@ -41,7 +41,21 @@ class JacobiIterationMethod extends BaseLinearAlgebra {
     newInitialX[row] = event.target.value;
     this.setState({ initialX: newInitialX });
   }
-  
+
+  //@ Method: จัดการเมื่อมีการเปลี่ยนแปลงค่าใน Matrix A
+  handleMatrixAChange = (event, row, col) => {
+    const newMatrixA = [...this.state.matrixA];
+    newMatrixA[row][col] = event.target.value;
+    this.setState({ matrixA: newMatrixA });
+  }
+
+  //@ Method: จัดการเมื่อมีการเปลี่ยนแปลงค่าใน Matrix B
+  handleMatrixBChange = (event, row) => {
+    const newMatrixB = [...this.state.matrixB];
+    newMatrixB[row] = event.target.value;
+    this.setState({ matrixB: newMatrixB });
+  }
+
   //? Method for Fill Data & Clear Data in Field
   //@ Override: สำหรับปุ่ม Fill Form (อัปเดตแล้ว)
   fillForm = () => {
