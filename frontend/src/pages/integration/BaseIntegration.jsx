@@ -3,6 +3,7 @@ import { Card, Form, Button, Row, Col } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
 import { evaluate } from "mathjs";
 import { fetchRandomPreset } from "../../PresetManager";
+import MathDisplay from "../../components/MathDisplay";
 
 class BaseIntegration extends React.Component {
   //@ Constructor: ตั้งค่า State ส่วนกลางสำหรับโจทย์ Integration
@@ -83,9 +84,9 @@ class BaseIntegration extends React.Component {
           </Col>
           <Col md={5}>
             <div className="p-3 fs-5 justify-content-start border rounded bg-light h-100 d-flex align-items-center">
-              <MathJax inline>{"\\(\\int_{a}^{b} f(x) \\, dx \\, \\approx \\, \\)"}</MathJax>
+              <MathDisplay>{"\\(\\int_{a}^{b} f(x) \\, dx \\, \\approx \\, \\)"}</MathDisplay>
               {fx ? (
-                <MathJax inline>{`\\(\\int_{${lowerBound}}^{${upperBound}}(${fx}) \\, dx\\)`}</MathJax>
+                <MathDisplay>{`\\(\\int_{${lowerBound}}^{${upperBound}}(${fx}) \\, dx\\)`}</MathDisplay>
               ) : (
                 <span className="opacity-50 ms-2">...</span>
               )}
@@ -130,7 +131,7 @@ class BaseIntegration extends React.Component {
         <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
           {this.state.solution.map((step, index) => (
             <div key={index} className="mb-3">
-              <MathJax>{step}</MathJax>
+              <MathDisplay>{step}</MathDisplay>
             </div>
           ))}
         </div>

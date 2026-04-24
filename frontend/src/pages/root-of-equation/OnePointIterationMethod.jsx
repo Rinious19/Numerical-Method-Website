@@ -1,6 +1,7 @@
 import BaseRootOfEquation from "./BaseRootOfEquation" //* Assuming the base class is in the same folder
 import { Form, Button, Table, Row, Col } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
+import MathDisplay from "../../components/MathDisplay";
 
 //? Class OnePointIterationMethod สืบทอดจาก BaseRootOfEquation
 class OnePointIterationMethod extends BaseRootOfEquation {
@@ -128,11 +129,11 @@ class OnePointIterationMethod extends BaseRootOfEquation {
           <Col md={5}>
             <div className="p-3 fs-5 border rounded bg-light h-100 mt-2 d-flex justify-content-start">
               {/* ใช้ MathJax แสดง f(x) = เสมอ */}
-              <MathJax inline>{"\\(f(x) \\quad=\\quad\\) "}</MathJax>
+              <MathDisplay>{"\\(f(x) \\quad=\\quad\\) "}</MathDisplay>
               {/* ตรวจสอบเงื่อนไขเพื่อแสดงสมการหรือ ... */}
               {this.state.fx ? (
                 // ถ้ามี fx ให้แสดงสมการ
-                <MathJax inline>{` \\(${this.state.fx}\\)`}</MathJax>
+                <MathDisplay>{` \\(${this.state.fx}\\)`}</MathDisplay>
               ) : (
                 // ถ้า fx ว่าง ให้แสดง ... แบบจางๆ
                 <span className="ms-2">...</span>

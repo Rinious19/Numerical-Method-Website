@@ -2,7 +2,7 @@ import React from "react";
 import BaseRootOfEquation from "./BaseRootOfEquation";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
-import { evaluate } from 'mathjs';
+import MathDisplay from "../../components/MathDisplay";
 
 class SecantMethod extends BaseRootOfEquation {
   //@ Constructor
@@ -118,8 +118,8 @@ class SecantMethod extends BaseRootOfEquation {
           </Col>
           <Col md={5}>
             <div className="p-3 fs-5 border rounded bg-light h-100 mt-2 d-flex justify-content-start">
-              <MathJax inline>{"\\(f(x) \\quad=\\quad\\) "}</MathJax>
-              {fx ? (<MathJax inline>{` \\(${fx}\\)`}</MathJax>) : (<span className="ms-2">...</span>)}
+              <MathDisplay>{"\\(f(x) \\quad=\\quad\\) "}</MathDisplay>
+              {fx ? (<MathDisplay>{` \\(${fx}\\)`}</MathDisplay>) : (<span className="ms-2">...</span>)}
             </div>
           </Col>
         </Row>

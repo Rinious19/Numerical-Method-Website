@@ -2,6 +2,7 @@ import BaseRootOfEquation from "./BaseRootOfEquation";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
 import { evaluate, derivative } from "mathjs";
+import MathDisplay from "../../components/MathDisplay";
 
 class NewtonRaphsonMethod extends BaseRootOfEquation {
   //@ Constructor
@@ -139,9 +140,9 @@ class NewtonRaphsonMethod extends BaseRootOfEquation {
           </Col>
           <Col md={5}>
             <div className="p-3 fs-5 border rounded bg-light h-100 mt-2 d-flex justify-content-start">
-              <MathJax inline>{"\\(f(x) \\quad=\\quad\\) "}</MathJax>
+              <MathDisplay>{"\\(f(x) \\quad=\\quad\\) "}</MathDisplay>
               {fx ? (
-                <MathJax inline>{` \\(${fx}\\)`}</MathJax>
+                <MathDisplay>{` \\(${fx}\\)`}</MathDisplay>
               ) : (
                 <span className="ms-2">...</span>
               )}

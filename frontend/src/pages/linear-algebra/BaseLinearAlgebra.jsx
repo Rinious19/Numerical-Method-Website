@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
+import MathDisplay from "../../components/MathDisplay";
 
 class BaseLinearAlgebra extends React.Component {
   //@ Constructor: ตั้งค่า State ส่วนกลางสำหรับโจทย์เมทริกซ์
@@ -124,7 +125,7 @@ class BaseLinearAlgebra extends React.Component {
                   key={row} 
                   className="mb-3 d-flex align-items-center justify-content-center" 
                   style={{ height: '4rem', width: '4rem' }}>
-                        <MathJax inline>{`\\(x_{${row+1}}\\)`}</MathJax>
+                        <MathDisplay>{`\\(x_{${row+1}}\\)`}</MathDisplay>
                     </div>
                 ))}
             </div>
@@ -164,7 +165,7 @@ class BaseLinearAlgebra extends React.Component {
         <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
           {this.state.solution.map((step, index) => (
             <div key={index} className="mb-3">
-              <MathJax>{step}</MathJax>
+              <MathDisplay>{step}</MathDisplay>
             </div>
           ))}
         </div>

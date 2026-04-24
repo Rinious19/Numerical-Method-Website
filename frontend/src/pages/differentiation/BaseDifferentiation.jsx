@@ -3,6 +3,7 @@ import { Card, Form, Button, Row, Col } from "react-bootstrap";
 import { fetchRandomPreset } from "../../PresetManager";
 import { MathJax } from "better-react-mathjax";
 import { evaluate } from "mathjs";
+import MathDisplay from "../../components/MathDisplay";
 
 class BaseDifferentiation extends React.Component {
   //@ Constructor: ตั้งค่า State ส่วนกลางสำหรับโจทย์ Differentiation
@@ -84,9 +85,9 @@ class BaseDifferentiation extends React.Component {
           </Col>
           <Col md={5}>
             <div className="p-3 fs-5 justify-content-start border rounded bg-light h-100 d-flex align-items-center">
-              <MathJax inline>{"\\(f(x) \\quad = \\quad \\)"}</MathJax>
+              <MathDisplay>{"\\(f(x) \\quad = \\quad \\)"}</MathDisplay>
               {fx ? (
-                <MathJax inline>{`\\(${fx}\\)`}</MathJax>
+                <MathDisplay>{`\\(${fx}\\)`}</MathDisplay>
               ) : (
                 <span className="opacity-50 ms-2">...</span>
               )}
@@ -157,7 +158,7 @@ class BaseDifferentiation extends React.Component {
         <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
           {this.state.solution.map((step, index) => (
             <div key={index} className="mb-3">
-              <MathJax>{step}</MathJax>
+              <MathDisplay>{step}</MathDisplay>
             </div>
           ))}
         </div>

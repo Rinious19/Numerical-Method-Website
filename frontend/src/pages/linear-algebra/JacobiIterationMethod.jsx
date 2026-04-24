@@ -3,6 +3,7 @@ import BaseLinearAlgebra from "./BaseLinearAlgebra";
 import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
 import { format } from "mathjs";
+import MathDisplay from "../../components/MathDisplay";
 
 class JacobiIterationMethod extends BaseLinearAlgebra {
   //@ Constructor
@@ -180,7 +181,7 @@ class JacobiIterationMethod extends BaseLinearAlgebra {
                   key={row} 
                   className="mb-3 d-flex align-items-center justify-content-center" 
                   style={{ height: '4rem', width: '4rem' }}>
-                        <MathJax inline>{`\\(x_{${row+1}}\\)`}</MathJax>
+                        <MathDisplay>{`\\(x_{${row+1}}\\)`}</MathDisplay>
                     </div>
                 ))}
             </div>
@@ -247,14 +248,14 @@ class JacobiIterationMethod extends BaseLinearAlgebra {
                       <td>
                           {iterData.x.map((val, index) => (
                               <div key={index}>
-                                  <MathJax inline>{`\\(x_{${index + 1}} = ${format(val, { notation: 'fixed', precision: 6 })}\\)`}</MathJax>
+                                  <MathDisplay>{`\\(x_{${index + 1}} = ${format(val, { notation: 'fixed', precision: 6 })}\\)`}</MathDisplay>
                               </div>
                           ))}
                       </td>
                       <td>
                           {iterData.error.map((err, index) => (
                               <div key={index}>
-                                  <MathJax inline>{`\\(e_{${index + 1}} = ${isFinite(err) ? err.toFixed(precision) : '\\infty'}\\)`}</MathJax>
+                                  <MathDisplay>{`\\(e_{${index + 1}} = ${isFinite(err) ? err.toFixed(precision) : '\\infty'}\\)`}</MathDisplay>
                               </div>
                           ))}
                       </td>

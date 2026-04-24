@@ -3,6 +3,7 @@ import { Card, Form, Button, Row, Col, InputGroup } from "react-bootstrap"; //* 
 import Plot from "react-plotly.js";
 import { MathJax } from "better-react-mathjax";
 import { format, lusolve, multiply, transpose } from "mathjs";
+import MathDisplay from "../../components/MathDisplay";
 
 class MultipleLinearRegression extends React.Component {
   //@ Constructor
@@ -292,7 +293,7 @@ class MultipleLinearRegression extends React.Component {
         <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
           {this.state.solution.map((step, index) => (
             <div key={index} className="mb-3">
-              <MathJax>{step}</MathJax>
+              <MathDisplay>{step}</MathDisplay>
             </div>
           ))}
         </div>

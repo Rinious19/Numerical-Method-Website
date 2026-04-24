@@ -2,6 +2,7 @@ import BaseLinearAlgebra from "./BaseLinearAlgebra";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
 import { det, format } from "mathjs";
+import MathDisplay from "../../components/MathDisplay";
 
 class CramersRule extends BaseLinearAlgebra {
   //@ Constructor
@@ -79,7 +80,7 @@ class CramersRule extends BaseLinearAlgebra {
         <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
           {this.state.solution.map((step, index) => (
             <div key={index} className="mb-3">
-              <MathJax>{step}</MathJax>
+              <MathDisplay>{step}</MathDisplay>
             </div>
           ))}
         </div>

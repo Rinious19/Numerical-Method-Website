@@ -4,6 +4,7 @@ import React from 'react'; //* Import React
 import { Table } from 'react-bootstrap'; //* Import Table
 import { MathJax } from "better-react-mathjax"; //* Import MathJax
 import { format } from "mathjs"; //* Import format
+import MathDisplay from "../../components/MathDisplay";
 
 class ConjugateGradientMethod extends JacobiIterationMethod {
   //@ Constructor
@@ -102,12 +103,12 @@ class ConjugateGradientMethod extends JacobiIterationMethod {
                       <td>
                           {iterData.x.map((val, index) => (
                               <div key={index}>
-                                  <MathJax inline>{`\\(x_{${index + 1}} = ${format(val, { notation: 'fixed', precision: 6 })}\\)`}</MathJax>
+                                  <MathDisplay>{`\\(x_{${index + 1}} = ${format(val, { notation: 'fixed', precision: 6 })}\\)`}</MathDisplay>
                               </div>
                           ))}
                       </td>
                       <td className="text-center">
-                          <MathJax inline>{`\\(${isFinite(iterData.error) ? iterData.error.toFixed(precision) : '\\infty'}\\)`}</MathJax>
+                          <MathDisplay>{`\\(${isFinite(iterData.error) ? iterData.error.toFixed(precision) : '\\infty'}\\)`}</MathDisplay>
                       </td>
                   </tr>
               ))}

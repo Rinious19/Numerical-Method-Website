@@ -46,11 +46,12 @@ function Home() {
       "Backward Divided Difference": "/differentiation/backward-divided-difference",
       "Central Divided Difference": "/differentiation/central-divided-difference",
     },
-    "Test ⚙️": {
-      "Test 1": "/test/test-1",
-      "Test 2": "/test/test-2",
-      "Test 3": "/test/test-3",
-    },
+    //! สำหรับ Test ⚙️ ในระหว่างพัฒนา
+    // "Test ⚙️": {
+    //   "Test 1": "/test/test-1",
+    //   "Test 2": "/test/test-2",
+    //   "Test 3": "/test/test-3",
+    // },
   };
 
   //@ State เริ่มต้นเป็นค่าว่าง

@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Form, Button, Row, Col, InputGroup } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
+import MathDisplay from "../../components/MathDisplay";
 
 class BaseInterpolation extends React.Component {
   //@ Constructor: ตั้งค่า State ส่วนกลางสำหรับโจทย์ Interpolation
@@ -133,7 +134,7 @@ class BaseInterpolation extends React.Component {
         <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
           {this.state.solution.map((step, index) => (
             <div key={index} className="mb-3">
-              <MathJax>{step}</MathJax>
+              <MathDisplay>{step}</MathDisplay>
             </div>
           ))}
         </div>

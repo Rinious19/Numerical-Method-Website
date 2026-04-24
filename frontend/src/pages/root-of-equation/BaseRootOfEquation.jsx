@@ -4,6 +4,7 @@ import { Form, Button, Table, Card, Container, Row, Col } from "react-bootstrap"
 import { evaluate } from 'mathjs';
 import { fetchRandomPreset } from "../../PresetManager"; //* Import ฟังก์ชันดึงข้อมูล
 import { MathJax } from "better-react-mathjax"; //* Import MathJax
+import MathDisplay from "../../components/MathDisplay";
 
 class BaseRootOfEquation extends React.Component {
   constructor(props) { 
@@ -131,8 +132,8 @@ class BaseRootOfEquation extends React.Component {
           {/* ส่วน Preview Box */}
           <Col md={5}>
             <div className="p-3 fs-5 border rounded bg-light h-100 mt-2 d-flex justify-content-start">
-              <MathJax inline>{"\\(f(x) \\quad=\\quad\\) "}</MathJax>
-              {this.state.fx ? (<MathJax inline>{` \\(${this.state.fx}\\)`}</MathJax>)
+              <MathDisplay>{"\\(f(x) \\quad=\\quad\\) "}</MathDisplay>
+              {this.state.fx ? (<MathDisplay>{` \\(${this.state.fx}\\)`}</MathDisplay>)
               :(<span className="ms-2">...</span>)}
             </div>
           </Col>

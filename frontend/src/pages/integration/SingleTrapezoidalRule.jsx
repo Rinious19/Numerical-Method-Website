@@ -3,6 +3,7 @@ import BaseIntegration from "./BaseIntegration";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { MathJax } from "better-react-mathjax";
 import { format } from "mathjs";
+import MathDisplay from "../../components/MathDisplay";
 
 class SingleTrapezoidalRule extends BaseIntegration {
   //@ Constructor
@@ -75,9 +76,9 @@ class SingleTrapezoidalRule extends BaseIntegration {
           </Col>
           <Col md={5}>
             <div className="p-3 fs-5 border rounded text-center bg-light h-100 d-flex align-items-center">
-              <MathJax inline>{"\\(\\int_{a}^{b} f(x) \\, dx \\, \\approx \\, \\)"}</MathJax>
+              <MathDisplay>{"\\(\\int_{a}^{b} f(x) \\, dx \\, \\approx \\, \\)"}</MathDisplay>
               {fx ? (
-                <MathJax inline>{`\\(\\int_{${lowerBound}}^{${upperBound}}(${fx}) \\, dx\\)`}</MathJax>
+                <MathDisplay>{`\\(\\int_{${lowerBound}}^{${upperBound}}(${fx}) \\, dx\\)`}</MathDisplay>
               ) : (
                 <span className="opacity-50 ms-2">...</span>
               )}
