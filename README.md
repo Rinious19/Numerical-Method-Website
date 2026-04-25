@@ -301,12 +301,15 @@ cp frontend/.env.example frontend/.env
 VITE_API_URL=http://localhost:8000
 ```
 
-**4. เตรียม MongoDB Compass**
+**4. เตรียม MongoDB**
 
-ตรวจสอบให้แน่ใจว่า MongoDB Compass กำลังรันอยู่บนเครื่อง จากนั้น Import ข้อมูลเริ่มต้น:
-```bash
-mongosh < mongo-init/init.js
-```
+ใช้ **MongoDB Shell** ที่ฝังอยู่ใน MongoDB Compass (ไม่ต้องติดตั้งเพิ่ม)
+
+1. เปิด **MongoDB Compass** และ Connect ให้เรียบร้อย
+2. สังเกตแถบด้านบนของหน้าต่าง จะมีปุ่ม **`>_Open MongoDB shell`** ให้คลิกเพื่อเปิด Embedded Shell
+3. เปิดไฟล์ `mongo-init/init.js` ใน Text Editor (เช่น VS Code) แล้ว **Copy โค้ดทั้งหมด**
+4. **Paste** ลงในช่อง MONGOSH แล้วกด Enter
+5. ระบบจะสร้าง Database `numericalMethodsDB` พร้อม Collection และข้อมูลตัวอย่างทั้งหมดให้ทันที
 
 **5. รัน Frontend และ Backend พร้อมกัน**
 ```bash
