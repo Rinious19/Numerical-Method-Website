@@ -8,7 +8,7 @@ const swaggerSpec = require('./swaggerConfig'); //* Import config ที่เ�
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 8000; //* Port ที่ Server จะทำงาน (ปกติคือ 8000)
-const MONGO_URL = process.env.MONGO_URL || `mongodb://localhost:27017/numericalMethodsDB` 
+const MONGO_URI = process.env.MONGO_URI || `mongodb://localhost:27017/numericalMethodsDB` 
 
 //@ ส่วนที่ 2: Middleware (ตัวกลางจัดการคำขอ)
 //* ตั้งค่า CORS ให้รับ Request จาก Client ที่ระบุไว้ใน .env เท่านั้น (localhost:5173) (ใช้ VITE)
@@ -23,7 +23,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //@ ส่วนที่ 3: การเชื่อมต่อฐานข้อมูล MongoDB
 //* Mongoose จะอ่าน "ที่อยู่" ของ Database จากไฟล์ .env โดยอัตโนมัติ
-mongoose.connect(MONGO_URL)
+mongoose.connect(MONGO_URI)
 .then(() => {
     console.log("✅ MongoDB connected successfully!");
     //? ลบการเรียกใช้ฟังก์ชัน insertInitialData ออก

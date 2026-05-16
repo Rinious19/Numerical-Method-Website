@@ -229,7 +229,7 @@
 
 ### วิธีที่ 1: รันด้วย Docker (แนะนำ)
 
-วิธีนี้จะ Start ทุกอย่างในครั้งเดียว ทั้ง Frontend, Backend และ MongoDB
+วิธีนี้จะ Start ทุกอย่างในครั้งเดียว ทั้ง Frontend, Backend และ MongoDB โดย Image พร้อมใช้งานบน Docker Hub — ไม่ต้อง Build เอง
 
 **1. Clone โปรเจค**
 ```bash
@@ -237,13 +237,12 @@ git clone https://github.com/Rinious19/Numerical-Method-Website
 cd Numerical-Method-Website
 ```
 
-
-> ไฟล์ .env ไม่จำเป็นต้องแก้ไขอะไร สำหรับการรันด้วย Docker ค่า default ใช้งานได้เลย
-
-**2. Build และ Start ทุก Service**
+**2. Pull Image และ Start ทุก Service**
 ```bash
-docker compose up --build
+docker compose up -d
 ```
+
+> Docker จะ Pull Image ล่าสุดจาก Registry แล้วรันทันที
 
 **3. เข้าใช้งาน**
 
@@ -261,6 +260,9 @@ docker compose down
 
 # หยุดและลบข้อมูลทั้งหมด (รวม MongoDB volume)
 docker compose down -v
+
+# อัปเดต Image เป็นเวอร์ชันล่าสุด
+docker compose pull && docker compose up -d
 ```
 
 ---
@@ -288,7 +290,7 @@ cp backend/.env.example backend/.env
 ```
 แก้ไข `backend/.env`:
 ```env
-MONGO_URL=mongodb://localhost:27017/numericalMethodsDB
+MONGO_URI=mongodb://localhost:27017/numericalMethodsDB
 CLIENT_URL=http://localhost:5173
 ```
 

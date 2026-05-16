@@ -5,26 +5,28 @@ version: '3.8'
 services:
   #* 1. ตู้คอนเทนเนอร์สำหรับ Frontend (React/VITE)
   frontend:
-    build:
-      context: ./frontend # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ frontend/
+    # build:
+    #   context: ./frontend # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ frontend/
     # ตั้งชื่อให้ตู้คอนเทนเนอร์
     container_name: numerical-frontend
+    image: rinious19/numerical-method-frontend
     # "เชื่อมประตู": เชื่อมประตูหมายเลข 5173 ของเครื่องคุณ เข้ากับประตูหมายเลข 80 ของตู้นี้ (ที่ Nginx เปิดไว้)
     ports:
       - "5173:80"
 
   #* 2. ตู้คอนเทนเนอร์สำหรับ Backend (Node.js/Express)
   backend:
-    build:
-      context: ./backend # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ backend/
+    # build:
+    #   context: ./backend # บอกให้สร้างจาก Dockerfile ที่อยู่ในโฟลเดอร์ backend/
     container_name: numerical-backend
+    image: rinious19/numerical-method-backend
     ports:
       - "8000:8000"
     # "ตั้งค่าสภาพแวดล้อม" ให้กับโปรแกรมในตู้นี้
     environment:
       #! สำคัญมาก: บอกให้ Server ไปคุยกับ Database ที่ชื่อ "mongo" (ไม่ใช่ localhost)
       # Docker Compose จะสร้าง Network ภายในให้ตู้ทั้งหมดคุยกันผ่านชื่อ Service ได้
-      - MONGO_URL=mongodb://mongo:27017/numericalMethodsDB
+      - MONGO_URI=mongodb://mongo:27017/numericalMethodsDB
       # บอก Server ว่าให้รับคำขอจาก Frontend ที่ Port 5173
       - CLIENT_URL=http://localhost:5173
     # "เงื่อนไขการเริ่มทำงาน": บอกให้ตู้นี้รอจนกว่าตู้ "mongo" จะพร้อมทำงานก่อน
